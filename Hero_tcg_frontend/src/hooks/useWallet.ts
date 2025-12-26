@@ -1,8 +1,8 @@
-import { useCurrentAccount, useWalletKit } from '@mysten/dapp-kit'
+import { useCurrentAccount, useWallets } from '@mysten/dapp-kit'
 
 export function useWallet() {
   const account = useCurrentAccount()
-  const { currentWallet, wallets } = useWalletKit()
+  const wallets = useWallets()
 
   return {
     currentAccount: account,
@@ -13,8 +13,7 @@ export function useWallet() {
     },
     status: account ? 'connected' : 'disconnected',
     isConnected: !!account,
-    walletAddress: account?.address,
-    currentWallet
+    walletAddress: account?.address
   }
 }
 

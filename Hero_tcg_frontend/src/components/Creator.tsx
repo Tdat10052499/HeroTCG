@@ -4,7 +4,12 @@ import CreatorAvatar from '../assets/Tuandat.png'
 import QRCodeModal from './QRCodeModal'
 import DiscordModal from './DiscordModal'
 
-export default function Creator() {
+interface CreatorProps {
+  profile?: { name: string; rank: string; avatar: string }
+  walletAddress?: string
+}
+
+export default function Creator({ profile: _profile, walletAddress: _walletAddress }: CreatorProps) {
   const [showQRModal, setShowQRModal] = useState(false)
   const [showDiscordModal, setShowDiscordModal] = useState(false)
   const [displayedText, setDisplayedText] = useState('')

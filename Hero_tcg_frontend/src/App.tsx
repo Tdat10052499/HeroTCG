@@ -101,17 +101,19 @@ function App() {
         
         // Add fetched heroes first
         fetchedHeroes.forEach(hero => {
-          heroMap.set(hero.objectId, hero)
+          if (hero.objectId) {
+            heroMap.set(hero.objectId, hero)
+          }
         })
         
         // Merge with existing heroes - preserve txHash from memory
         prevHeroes.forEach(prevHero => {
-          if (heroMap.has(prevHero.objectId)) {
+          if (prevHero.objectId && heroMap.has(prevHero.objectId)) {
             const fetchedHero = heroMap.get(prevHero.objectId)!
             // Merge: keep blockchain data but preserve txHash
             heroMap.set(prevHero.objectId, {
               ...fetchedHero,
-              txHash: prevHero.txHash || fetchedHero.txHash || txHashMap[prevHero.objectId] || ''
+              txHash: prevHero.txHash || fetchedHero.txHash || (prevHero.objectId && txHashMap[prevHero.objectId]) || ''
             })
           }
         })
@@ -161,10 +163,12 @@ function App() {
     // Save TX hash in map for later reference
     if (heroData.objectId && heroData.txHash) {
       console.log('Saving txHash for objectId:', heroData.objectId, '-> txHash:', heroData.txHash)
+      const objectId = heroData.objectId
+      const txHash = heroData.txHash
       setTxHashMap(prev => {
-        const updated = {
+        const updated: Record<string, string> = {
           ...prev,
-          [heroData.objectId]: heroData.txHash
+          [objectId]: txHash
         }
         console.log('Updated txHashMap:', updated)
         return updated
