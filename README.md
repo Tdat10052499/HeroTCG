@@ -1,27 +1,36 @@
----
-Language: [Tiếng Việt](#vietnamese) | [English](#english)
+# HeroTCG - Trò Chơi Thẻ Bài Nhân Vật
+
+> Một trò chơi thẻ bài phân tán được xây dựng trên blockchain Sui
+
+[![Sui Network](https://img.shields.io/badge/Sui-Network-4DA2FF?style=flat&logo=sui&logoColor=white)](https://sui.io/)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat&logo=react&logoColor=white)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Move](https://img.shields.io/badge/Move-Smart%20Contracts-00D4FF?style=flat)](https://move-language.github.io/)
+
+**HeroTCG** là ứng dụng game thẻ bài phân tán được xây dựng trên blockchain Sui, cho phép người dùng tạo, sở hữu và giao dịch các chiếc thẻ nhân vật (Hero) NFT duy nhất.
 
 ---
-
-<h1 id="vietnamese">HeroTCG - Trò Chơi Thẻ Bài Nhân Vật</h1>
-
-Một ứng dụng game thẻ bài phân tán được xây dựng trên blockchain Sui, cho phép người dùng tạo, sở hữu và giao dịch các chiếc thẻ nhân vật (Hero) duy nhất.
 
 ## Mục Lục
 
-- [Tính Năng](#tính-năng-vietnamese)
-- [Công Nghệ](#công-nghệ-vietnamese)
-- [Yêu Cầu Hệ Thống](#yêu-cầu-hệ-thống-vietnamese)
-- [Cài Đặt](#cài-đặt-vietnamese)
-- [Chạy Dự Án](#chạy-dự-án-vietnamese)
-- [Cấu Trúc Dự Án](#cấu-trúc-dự-án-vietnamese)
-- [Wireframe Trang Web](#wireframe-trang-web-vietnamese)
-- [Hướng Dẫn Sử Dụng](#hướng-dẫn-sử-dụng-vietnamese)
-- [API & Smart Contract](#api--smart-contract-vietnamese)
-- [Đóng Góp](#đóng-góp-vietnamese)
-- [Giấy Phép](#giấy-phép-vietnamese)
+- [Tính Năng](#tính-năng)
+- [Công Nghệ](#công-nghệ)
+- [Yêu Cầu Hệ Thống](#yêu-cầu-hệ-thống)
+- [Cài Đặt](#cài-đặt)
+- [Chạy Dự Án](#chạy-dự-án)
+- [Cấu Trúc Dự Án](#cấu-trúc-dự-án)
+- [Wireframe Trang Web](#wireframe-trang-web)
+- [Hướng Dẫn Sử Dụng](#hướng-dẫn-sử-dụng)
+- [API & Smart Contract](#api--smart-contract)
+- [Đóng Góp](#đóng-góp)
+- [Giấy Phép](#giấy-phép)
+- [Team](#team)
+- [Liên Hệ](#liên-hệ)
 
-<h2 id="tính-năng-vietnamese">Tính Năng</h2>
+---
+
+## Tính Năng
 
 ### Smart Contract
 - Tạo nhân vật (Hero) với các thuộc tính tùy chỉnh
@@ -37,72 +46,67 @@ Một ứng dụng game thẻ bài phân tán được xây dựng trên blockch
 - Chia sẻ QR Code nhân vật
 - Kết nối Discord
 
-<h2 id="công-nghệ-vietnamese">Công Nghệ</h2>
+---
 
-### Backend (Smart Contract)
-- **Move**: Ngôn ngữ lập trình smart contract trên Sui được thiết kế để tối ưu hóa bảo mật và hiệu quả
-  - Resource-oriented architecture
-  - Linear type system đảm bảo an toàn
-  - Thích hợp cho các ứng dụng NFT và token
-  
-- **Sui Framework**: Blockchain Sui standard library cung cấp:
-  - Object model cho quản lý trạng thái
-  - Built-in support cho NFTs và digital assets
-  - High-performance transaction processing
-  
-- **Bridge**: Kết nối giữa các blockchain
-  - Cross-chain message passing
-  - Token bridging capabilities
-  - Multi-chain compatibility
+## Công Nghệ
 
-### Frontend
-- **React 18**: Thư viện UI hiện đại
+### Frontend Stack
+- **React 18** - UI framework hiện đại
   - Component-based architecture
   - React Hooks cho state management
   - Fast rendering với Concurrent features
   - Virtual DOM optimization
   
-- **TypeScript**: Lập trình an toàn với kiểu dữ liệu
+- **TypeScript** - Lập trình an toàn với kiểu dữ liệu
   - Static type checking giảm bugs
   - Tốt hơn IDE autocompletion
   - Better code documentation
   - Type-safe blockchain interactions
   
-- **Vite**: Build tool hiệu suất cao
+- **Vite** - Build tool hiệu suất cao
   - Lightning-fast HMR (Hot Module Replacement)
   - Fast cold server start
   - Optimized production build
   - ESM support
   
-- **Sui dApp Kit**: Công cụ phát triển ứng dụng Sui
+- **Sui dApp Kit** - Công cụ phát triển ứng dụng Sui
   - useCurrentAccount hook cho wallet state
   - useSignAndExecuteTransaction cho blockchain transactions
   - useSuiClient cho RPC interactions
   - Built-in wallet adapter support
   
-- **CSS3**: Styling responsive
+- **CSS3** - Styling responsive
   - Flexbox layout system
   - CSS Grid để tạo layouts phức tạp
   - CSS Variables cho theme management
   - Media queries cho responsive design
   - Animations và transitions
 
-### Công Nghệ Phụ Trợ
-- **Node.js**: JavaScript runtime environment
-  - npm/yarn package management
-  - Development server
+### Blockchain Stack
+- **Move** - Ngôn ngữ lập trình smart contract trên Sui
+  - Resource-oriented architecture
+  - Linear type system đảm bảo an toàn
+  - Thích hợp cho các ứng dụng NFT và token
   
-- **JSON RPC**: Giao tiếp với blockchain
-  - Sui JSON-RPC API
-  - Async/await pattern
-  - Error handling
+- **Sui Framework** - Blockchain Sui standard library
+  - Object model cho quản lý trạng thái
+  - Built-in support cho NFTs và digital assets
+  - High-performance transaction processing
   
-- **QR Code**: Chia sẻ và truy cập
-  - QR code generation
-  - Deep linking
-  - Share functionality
+- **Bridge** - Kết nối giữa các blockchain
+  - Cross-chain message passing
+  - Token bridging capabilities
+  - Multi-chain compatibility
 
-<h2 id="yêu-cầu-hệ-thống-vietnamese">Yêu Cầu Hệ Thống</h2>
+### Công Nghệ Phụ Trợ
+- **Node.js** - JavaScript runtime environment
+- **JSON RPC** - Giao tiếp với blockchain
+- **QR Code** - Chia sẻ và truy cập
+- **npm/yarn** - Package management
+
+---
+
+## Yêu Cầu Hệ Thống
 
 ### Để phát triển Smart Contract
 - Node.js >= 18.0
@@ -115,7 +119,9 @@ Một ứng dụng game thẻ bài phân tán được xây dựng trên blockch
 - npm >= 9.0 hoặc yarn >= 3.0
 - Git
 
-<h2 id="cài-đặt-vietnamese">Cài Đặt</h2>
+---
+
+## Cài Đặt
 
 ### 1. Clone repository
 ```bash
@@ -138,7 +144,9 @@ npm install
 yarn install
 ```
 
-<h2 id="chạy-dự-án-vietnamese">Chạy Dự Án</h2>
+---
+
+## Chạy Dự Án
 
 ### Chạy Smart Contract
 ```bash
@@ -176,7 +184,9 @@ yarn preview
 
 Frontend sẽ chạy tại `http://localhost:5173`
 
-<h2 id="cấu-trúc-dự-án-vietnamese">Cấu Trúc Dự Án</h2>
+---
+
+## Cấu Trúc Dự Án
 
 ```
 HeroTCG/
@@ -216,7 +226,9 @@ HeroTCG/
 └── README.md                      # File này
 ```
 
-<h2 id="wireframe-trang-web-vietnamese">Wireframe Trang Web</h2>
+---
+
+## Wireframe Trang Web
 
 ### Giao Diện Chính (Main Layout)
 
@@ -377,7 +389,9 @@ HeroTCG/
 └──────────────────────────────┘
 ```
 
-<h2 id="hướng-dẫn-sử-dụng-vietnamese">Hướng Dẫn Sử Dụng</h2>
+---
+
+## Hướng Dẫn Sử Dụng
 
 ### Tạo Tài Khoản và Kết Nối Ví
 1. Mở ứng dụng tại `http://localhost:5173`
@@ -396,7 +410,9 @@ HeroTCG/
 2. Xem thông tin chi tiết và lịch sử giao dịch
 3. Chia sẻ QR Code hoặc kết nối Discord
 
-<h2 id="api--smart-contract-vietnamese">API & Smart Contract</h2>
+---
+
+## API & Smart Contract
 
 ### Smart Contract Functions
 
@@ -432,7 +448,9 @@ const heroes = await getHeroList(walletAddress)
 const result = await createHero(heroData, suiClient, wallet)
 ```
 
-<h2 id="đóng-góp-vietnamese">Đóng Góp</h2>
+---
+
+## Đóng Góp
 
 Chúng tôi hoan nghênh các đóng góp từ cộng đồng!
 
@@ -449,12 +467,53 @@ Chúng tôi hoan nghênh các đóng góp từ cộng đồng!
 - Cập nhật README nếu thêm tính năng mới
 - Sử dụng commit messages rõ ràng
 
-<h2 id="giấy-phép-vietnamese">Giấy Phép</h2>
+---
+
+## Giấy Phép
 
 Dự án này được cấp phép dưới giấy phép MIT. Xem file [LICENSE](LICENSE) để biết thêm chi tiết.
+
+---
+
+## Team
+
+**HeroTCG Development Team**
+- **Project Lead**: Tuấn Đạt
+- **Frontend Developer**: Tuấn Đạt
+- **Smart Contract Developer**: Tuấn Đạt
+- **UI/UX Designer**: Tuấn Đạt
+
+---
+
+## Cảm Ơn
+
+- Cảm ơn Sui Foundation vì blockchain tuyệt vời
+- Cảm ơn cộng đồng Move vì những công cụ và tài liệu
+- Cảm ơn React team vì framework tuyệt vời
+- Cảm ơn tất cả những người đóng góp
+
+---
+
+## Liên Hệ
+
+Nếu bạn có câu hỏi hoặc đề xuất, vui lòng:
+- Mở một Issue trên GitHub
+- Liên hệ qua Discord
+- Gửi email tới team phát triển
+
+---
+
+<div align="center">
+
+**Xây dựng với tình yêu trên Blockchain Sui**
+
+[⬆ Quay lại đầu trang](#herotcg---trò-chơi-thẻ-bài-nhân-vật)
+
+</div>
 
 ---
 
 **Status**: Đang phát triển
 **Version**: 0.0.0
 **Last Updated**: December 26, 2025
+
