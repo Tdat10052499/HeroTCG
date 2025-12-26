@@ -497,6 +497,7 @@ Dự án này được cấp phép dưới giấy phép MIT. Xem file [LICENSE](
 ## Liên Hệ
 
 Nếu bạn có câu hỏi hoặc đề xuất, vui lòng:
+- Repository GitHub: https://github.com/Tdat10052499/HeroTCG.git
 - Mở một Issue trên GitHub
 - Liên hệ qua Discord
 - Gửi email tới team phát triển
@@ -507,9 +508,163 @@ Nếu bạn có câu hỏi hoặc đề xuất, vui lòng:
 
 **Xây dựng với tình yêu trên Blockchain Sui**
 
+[![GitHub](https://img.shields.io/badge/GitHub-Tdat10052499/HeroTCG-181717?style=flat&logo=github)](https://github.com/Tdat10052499/HeroTCG.git)
+
 [⬆ Quay lại đầu trang](#herotcg---trò-chơi-thẻ-bài-nhân-vật)
 
 </div>
+
+---
+
+## Deploy
+
+### Deploy Frontend lên Vercel
+
+#### Option 1: Vercel CLI (Được Khuyến Nghị)
+
+**Bước 1: Cài đặt Vercel CLI**
+```bash
+npm i -g vercel
+```
+
+**Bước 2: Đăng nhập vào Vercel**
+```bash
+vercel login
+```
+
+**Bước 3: Build dự án**
+```bash
+cd Hero_tcg_frontend
+npm run build
+```
+
+**Bước 4: Deploy**
+```bash
+# Deploy lần đầu (interactive)
+vercel
+
+# Deploy to production
+vercel --prod
+```
+
+#### Option 2: GitHub Integration (Tự động Deploy)
+
+**Bước 1: Push code lên GitHub**
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/yourusername/HeroTCG.git
+git push -u origin main
+```
+
+**Bước 2: Kết nối Vercel với GitHub**
+1. Truy cập https://vercel.com/new
+2. Chọn "Import Git Repository"
+3. Kết nối tài khoản GitHub
+4. Chọn repository `HeroTCG`
+
+**Bước 3: Cấu hình Project**
+- Framework Preset: **Vite**
+- Root Directory: **Hero_tcg_frontend**
+- Build Command: **npm run build**
+- Output Directory: **dist**
+
+**Bước 4: Thêm Environment Variables**
+
+Trong Vercel Dashboard, đi tới **Settings > Environment Variables** và thêm:
+
+```
+VITE_SUI_PACKAGE_ID=0xff71d817d1d5adeb8d4d8471a9fe477db82aa6eda9d1df45f3b758bd5c5fb8d4
+VITE_SUI_NETWORK=testnet
+```
+
+**Bước 5: Deploy**
+
+Click "Deploy" - Vercel sẽ tự động build và deploy.
+
+### Cấu hình Vercel.json
+
+Tạo file `Hero_tcg_frontend/vercel.json`:
+
+```json
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm ci",
+  "framework": "vite",
+  "outputDirectory": "dist",
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html",
+      "statusCode": 200
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=3600"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Post-Deployment Checklist
+
+- [ ] Kiểm tra URL deployed (ví dụ: https://herotcg.vercel.app)
+- [ ] Test Wallet Connection trên deployed version
+- [ ] Kiểm tra console không có lỗi
+- [ ] Kiểm tra performance (Lighthouse)
+- [ ] Test tất cả features:
+  - [ ] Connect Wallet
+  - [ ] Create Hero
+  - [ ] View Heroes Grid
+  - [ ] Hero Details Modal
+  - [ ] QR Code Share
+- [ ] Cấu hình custom domain (nếu cần)
+
+### Troubleshooting
+
+#### Build Error
+```bash
+# Clear node_modules và reinstall
+rm -rf node_modules package-lock.json
+npm install
+npm run build
+```
+
+#### Environment Variables không hoạt động
+1. Đảm bảo variables bắt đầu với `VITE_`
+2. Restart deployment sau khi thêm variables
+3. Kiểm tra trong browser: `console.log(import.meta.env.VITE_SUI_PACKAGE_ID)`
+
+#### Wallet Connection không hoạt động
+1. Kiểm tra Contract IDs có đúng không
+2. Kiểm tra Network (testnet/mainnet)
+3. Xóa localStorage: `localStorage.clear()`
+4. Refresh page và thử lại
+
+#### 404 Error
+Đảm bảo file `vercel.json` được cấu hình đúng với redirect rules.
+
+### Domain Setup (Optional)
+
+**Cấu hình Custom Domain:**
+1. Truy cập Vercel Dashboard → Project Settings → Domains
+2. Thêm domain của bạn
+3. Update DNS records theo hướng dẫn Vercel
+4. Chờ DNS propagation (5-48 giờ)
 
 ---
 
