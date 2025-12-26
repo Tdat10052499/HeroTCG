@@ -1,0 +1,204 @@
+/* ===== QR CODE MODAL ===== */
+.qr-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.qr-modal-content {
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.15);
+  backdrop-filter: blur(10px);
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+}
+
+.qr-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: var(--primary);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.qr-modal-close:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--primary);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+.qr-modal-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.qr-modal-header h3 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.qr-modal-header p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.qr-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.qr-code-container {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 12px;
+}
+
+.qr-code-image {
+  width: 280px;
+  height: 280px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+}
+
+.qr-modal-info {
+  text-align: center;
+}
+
+.qr-modal-info p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0 0 1rem 0;
+}
+
+.qr-modal-info strong {
+  color: var(--primary);
+  font-family: 'Courier New', monospace;
+}
+
+.copy-telegram-btn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 153, 204, 0.05));
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: var(--primary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.copy-telegram-btn:hover {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 153, 204, 0.1));
+  border-color: var(--primary);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+}
+
+.copy-telegram-btn:active {
+  transform: scale(0.95);
+}
+
+.qr-modal-footer {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.qr-modal-button {
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(0, 153, 204, 0.1));
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.qr-modal-button:hover {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(0, 153, 204, 0.2));
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.qr-modal-button:active {
+  transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .qr-modal-content {
+    padding: 1.5rem;
+    max-width: 95%;
+  }
+
+  .qr-code-image {
+    width: 240px;
+    height: 240px;
+  }
+
+  .qr-modal-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .qr-modal-button {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.85rem;
+  }
+}
